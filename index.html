@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>IMAGICA</title>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="imagica.js"></script>
+		<!-- <link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
+		<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" type="text/css" href="imagica.css" />
+		<!-- <link href="https://code.jquery.com/ui/1.10.2/themes/ui-lightness/jquery-ui.css" rel="stylesheet"> -->
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
+	</head>
+
+	<body>
+		<header>
+			IMAGICA<br>Instant Image Processing for Videos 
+		</header>
+	
+		<div class="uploader" onchange="handleImage(this);"  style="text-align:center" >
+			<video id="inputVideo" controls>
+				<source src="" type="video/webm">
+				<!-- <source src="movie.ogg" type="video/ogg"> -->
+				Your browser does not support the video tag.
+			</video>
+			<!-- <img src="upload.png"  width="30%" align="left" style="margin-left:10%" id="filePhoto"/> -->
+			<input type="file" onchange="handleImage(this);" id="my_file" style="display: none;" />
+			<!-- <img src="output.png"  width="30%" align="right" style="margin-right:10%" id="outputVideo" /> -->
+			<video id="outputVideo" controls>
+				<!-- <source src="" type="video/webm"> -->
+				<!-- <source src="movie.ogg" type="video/ogg"> -->
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		
+		<div id="op">
+			<!-- <br><br><br> -->
+			<form>
+				
+				<select id="operation" style="text-align:center" onchange="opFunction()">
+					<option value="none">&lt;Operation&gt;</option>
+					<option value="canny">Canny</option>
+					<option value="sobel">Sobel Gradient</option>
+					<option value="fourier">Fourier Transform</option>
+					<option value="gamma">Gamma Correction</option>
+				</select>
+			</form>
+		</div>
+		
+		<!-- <br> -->
+		<!-- <div id="cannyslider"></div> -->
+		
+		<div id="parameter_container">
+			<div id="slider-3" align="right" >
+				<!-- <br><br><br><br><br><br>		 -->
+			</div>
+			<div id="slidertext">
+			<p>
+				<label for = "th_range">Threshold range:</label>
+				<input type = "text" id = "th_range" 
+					style = "border:0; color:blue; font-weight:bold; width:50%; align:right;font-size:20px; background-color:#83f3ff;">
+			</p>
+			</div>	
+
+			<div id="slider-4" align="right" >
+				<!-- <br><br><br><br><br><br>		 -->
+			</div>
+			<div id="gammavalue">
+			<p>
+				<label for = "gamma_val">Gamma Value:</label>
+				<input type = "text" id = "gamma_val" 
+					style = "border:0; color:blue; font-weight:bold; width:50%; align:right;font-size:20px; background-color:#83f3ff;">
+			</p>
+			</div>
+			<div id="myProgress" class="progress">
+				<div id="myBar"></div>
+			</div>
+		</div>
+		<!-- <button class="button button1">Shadow Button</button> -->
+		<div id="all_buttons">
+			<button class="button reset_button" id="reset" onclick="reset_function()">Reset</button>
+			<button class="button apply_button" id="apply" onclick="apply_function()">Apply</button>
+			<!-- <form method="get" action="small.webm"> -->
+			   <!-- <button class="button download_button" type="submit" id="download">Download</button> -->
+			<!-- </form> -->
+			<!-- <button class="button download_button" id="download" href="file.doc" download>Download</button> -->
+			<!-- <a href="path_to_file" download="proposed_file_name">Download</a> -->
+			<a href="small.webm" download>
+				<button class="button download_button" id="download">Download</button>
+			</a>
+			<button class="button cancel_button" id="cancel" onclick="cancel_function()">Cancel</button>
+		</div>
+
+		
+		
+	</body>
+</html>
